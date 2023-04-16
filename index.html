@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <script src="script.js" defer></script>
    <style>
+	   /* Add this to the <style> tag */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
 body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 .w3-row-padding img {margin-bottom: 12px}
 /* Set the width of the sidebar to 120px */
@@ -54,6 +60,16 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 	  <p>CONTATO
 	  </p>
 	</a>
+	<!-- Add these lines inside the <nav> tag and below the last <a> tag -->
+	<div class="w3-bar-item w3-padding-large w3-hover-black">
+	  <i class="fas fa-adjust w3-xxlarge" id="theme-toggler"></i>
+	  <p>MODE</p>
+	</div>
+	<div class="w3-bar-item w3-padding-large w3-hover-black">
+	  <i class="fas fa-language w3-xxlarge" id="language-switcher"></i>
+	  <p>LANGUAGE</p>
+	</div>
+
   </nav>
   
   <!-- Navbar on small screens (Hidden on medium and large screens) -->
@@ -69,7 +85,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <div class="w3-padding-large" id="main">
 	<!-- Header/Home -->
 	<header class="w3-container w3-padding-32 w3-center w3-black" id="home">
-	  <h1 class="w3-jumbo"><span class="w3-hide-small">Portfolio de </span> Aldemir.</h1>
+	  <h1 class="w3-jumbo"><span class="w3-hide-small">Portfólio de </span> Aldemir.</h1>
 	  <p>Programador e Estudante de Engenharia de Computação.</p>
 
 	  
@@ -80,11 +96,16 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 	  <h2 class="w3-text-light-grey">Sobre</h2>
 	  <hr style="width:200px" class="w3-opacity">
 	  <p>
-		  Olá, Meu Nome é Aldemir Humberto Soares Neto, atualmente eu estudo Engenharia de Computação no IFSP em Picacicaba, e trabalho como estagiário de desenvolvimento ETL na SMARTBREEDER, tenho muito interesse na manipulação e gestão de grandes quantidades de dados desde que comecei a estudar a materia de banco de dados na minha faculdade, tenho facilidade em aprender coisas novas e acima de tudo, disposição em aprender coisas novas na busca de me tornar um profissional melhor a cada dia
+		  Olá, Meu Nome é Aldemir Humberto Soares Neto, atualmente eu estudo Engenharia de Computação no IFSP em Picacicaba,
+e trabalho como desenvolvedor ETL na SMARTBREEDER, tenho muito interesse na manipulação e gestão de grandes quantidades de dados desde que comecei a estudar a materia de banco de dados na minha faculdade, tenho facilidade em aprender coisas novas e acima de tudo, disposição em aprender coisas novas na busca de me tornar um profissional melhor a cada dia.
+
+Eu sempre fui apaixonado por tecnologia e ciência da computação, e meu interesse em lidar com grandes quantidades de dados cresceu exponencialmente enquanto eu estudava banco de dados na faculdade. Quando comecei a trabalhar na SMARTBREEDER como desenvolvedor ETL, eu tive a oportunidade de trabalhar com dados de grande escala, e isso só aumentou meu interesse e motivação em aprender mais sobre manipulação e gestão de dados.
+
+Além disso, eu sou uma pessoa curiosa e proativa, sempre buscando aprender novas habilidades e conhecimentos. Eu acredito que a educação é uma jornada contínua, e estou sempre procurando oportunidades para expandir meus conhecimentos e habilidades para me tornar um profissional melhor e mais competente.
 		  
 	  </p>
 
-	  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+	  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="skills">
 				<h2 class="w3-text-light-grey">Habilidades</h2>
 				 <hr style="width:200px" class="w3-opacity">
 				<div class="my-5">
@@ -119,17 +140,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 	  </div><br>
 	  
 	  </div>
-  	<form method="get" action="Meu_curriculo.pdf">
-	  <button type="submit" class="btn btn-success btn-lg" class="w3-button w3-light-grey  w3-section">
-		<i class="fa fa-download"></i> Download Resume
-	  </button>
-	</form>
-	  
-	  
-	  
-	  
-	
-  
+
 	  <!-- Grid for projects -->
 	  <section id="portfolio">
        <div class="w3-padding-32 w3-content text"  id="projects">
@@ -158,7 +169,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
           			<p>Algoritmo de Busca Binária.</p></div>
         
                 
-		
+		</div>
         </div>
 
     </section>
@@ -192,6 +203,74 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <!-- END PAGE CONTENT -->
 
 
+<!-- Add this script tag at the end of the <body> tag -->
+<script>
+// Theme toggler
+const themeToggler = document.getElementById('theme-toggler');
+const lightGreyElements = document.querySelectorAll('.w3-text-light-grey');
 
+themeToggler.addEventListener('click', () => {
+  if (document.body.classList.contains('w3-black')) {
+    document.body.classList.remove('w3-black');
+    document.body.classList.add('w3-white');
+
+    // Change .w3-text-light-grey to black
+    lightGreyElements.forEach(element => {
+      element.classList.remove('w3-text-light-grey');
+      element.classList.add('w3-text-black');
+    });
+  } else {
+    document.body.classList.remove('w3-white');
+    document.body.classList.add('w3-black');
+
+    // Change .w3-text-black back to w3-text-light-grey
+    lightGreyElements.forEach(element => {
+      element.classList.remove('w3-text-black');
+      element.classList.add('w3-text-light-grey');
+    });
+  }
+});
+
+
+
+
+  // Language switcher
+
+const languageSwitcher = document.getElementById('language-switcher');
+languageSwitcher.addEventListener('click', () => {
+  const currentLang = document.documentElement.lang;
+  if (currentLang === 'en') {
+    document.documentElement.lang = 'pt';
+    document.querySelector('#home h1').textContent = 'Portfólio de Aldemir.';
+    document.querySelector('#home p').textContent = 'Programador e Estudante de Engenharia de Computação.';
+    document.querySelector('#about h2').textContent = 'Sobre';
+	document.querySelector('#skills h2').textContent = 'Habilidades';
+
+    document.querySelector('#about p').textContent = 'Olá, Meu Nome é Aldemir Humberto Soares Neto, atualmente eu estudo Engenharia de Computação no IFSP em Picacicaba,\n' +
+			'e trabalho como desenvolvedor ETL na SMARTBREEDER, tenho muito interesse na manipulação e gestão de grandes quantidades de dados desde que comecei a estudar a materia de banco de dados na minha faculdade, tenho facilidade em aprender coisas novas e acima de tudo, disposição em aprender coisas novas na busca de me tornar um profissional melhor a cada dia.\n' +
+			'\n' +
+			'Eu sempre fui apaixonado por tecnologia e ciência da computação, e meu interesse em lidar com grandes quantidades de dados cresceu exponencialmente enquanto eu estudava banco de dados na faculdade. Quando comecei a trabalhar na SMARTBREEDER como desenvolvedor ETL, eu tive a oportunidade de trabalhar com dados de grande escala, e isso só aumentou meu interesse e motivação em aprender mais sobre manipulação e gestão de dados.\n' +
+			'\n' +
+			'Além disso, eu sou uma pessoa curiosa e proativa, sempre buscando aprender novas habilidades e conhecimentos. Eu acredito que a educação é uma jornada contínua, e estou sempre procurando oportunidades para expandir meus conhecimentos e habilidades para me tornar um profissional melhor e mais competente.';
+    document.querySelector('#projects h2').textContent = 'Meus Projetos';
+    document.querySelector('#contact h2').textContent = 'Contate-me';
+  } else {
+    document.documentElement.lang = 'en';
+    document.querySelector('#home h1').textContent = 'Portfolio of Aldemir.';
+    document.querySelector('#home p').textContent = 'Programmer and Computer Engineering Student.';
+    document.querySelector('#about h2').textContent = 'About';
+	document.querySelector('#skills h2').textContent = 'Skills';
+    document.querySelector('#about p').textContent = 'Hello, my name is Aldemir Humberto Soares Neto. Currently, I am studying Computer Engineering at IFSP in Picacicaba, and working as an ETL developer at SMARTBREEDER. I have a strong interest in managing and manipulating large amounts of data, ever since I started studying database management in college. I have a knack for learning new things and, above all, a strong willingness to continuously learn in order to become a better professional each day.\n' +
+			'\n' +
+			'I have always been passionate about technology and computer science, and my interest in working with big data grew exponentially while studying database management in college. When I began working at SMARTBREEDER as an ETL developer, I had the opportunity to work with large-scale data, which only increased my interest and motivation to learn more about data management and manipulation.\n' +
+			'\n' +
+			'Moreover, I am a curious and proactive person, always seeking to learn new skills and knowledge. I believe that education is a lifelong journey, and I am constantly looking for opportunities to expand my knowledge and skills in order to become a better and more competent professional.';
+    document.querySelector('#projects h2').textContent = 'My Projects';
+    document.querySelector('#contact h2').textContent = 'Contact Me';
+  }
+});
+
+</script>
+</div>
 </body>
 </html>
