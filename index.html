@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <script src="script.js" defer></script>
+	<script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
    <style>
 	   /* Add this to the <style> tag */
 body {
@@ -37,8 +38,21 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   background-color: #f1f1f1;
   color: #000;
 }
+.animation-container {
+  height: 15vh;
+  width: 100%;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	font-size: 50px;
+  overflow: visible;
+}
 
 
+
+span{
+	color: darkgreen;
+}
 </style>
     
 
@@ -88,27 +102,28 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 	</div>
   </div>
 <!-- Page Content -->
-<div class="w3-padding-large" id="main">
+<div id="main">
 	<!-- Header/Home -->
-	<header class="w3-container w3-padding-32 w3-center w3-hover-black" id="home">
-	  <h1 class="w3-jumbo"><span class="w3-hide-small">Portfólio de </span> Aldemir.</h1>
-	  <p>Programador e Estudante de Engenharia de Computação.</p>
 
-	  
+	<header class="w3-container w3-center w3-hover-black" id="home">
+		<div class="animation-container">
+			<h1>I'm <span class="auto-type"></span></h1>
+
+		</div>
 	</header>
   
 	<!-- About Section -->
-	<div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+	<div class="w3-content w3-justify w3-text-grey " id="about">
 	  <h2 class="w3-text-light-grey">Sobre</h2>
 	  <hr style="width:200px" class="w3-opacity">
 	  <p>
 		  Olá, Meu Nome é Aldemir Humberto Soares Neto, atualmente eu estudo Engenharia de Computação no IFSP em Picacicaba,
 e trabalho como desenvolvedor ETL na SMARTBREEDER, tenho muito interesse na manipulação e gestão de grandes quantidades de dados desde que comecei a estudar a materia de banco de dados na minha faculdade, tenho facilidade em aprender coisas novas e acima de tudo, disposição em aprender coisas novas na busca de me tornar um profissional melhor a cada dia.
+		Eu sempre fui apaixonado por tecnologia e ciência da computação, e meu interesse em lidar com grandes quantidades de dados cresceu exponencialmente enquanto eu estudava banco de dados na faculdade.
+		  Quando comecei a trabalhar na SMARTBREEDER como desenvolvedor ETL, eu tive a oportunidade de trabalhar com dados de grande escala, e isso só aumentou meu interesse e motivação em aprender mais sobre manipulação e gestão de dados.
 
-Eu sempre fui apaixonado por tecnologia e ciência da computação, e meu interesse em lidar com grandes quantidades de dados cresceu exponencialmente enquanto eu estudava banco de dados na faculdade. Quando comecei a trabalhar na SMARTBREEDER como desenvolvedor ETL, eu tive a oportunidade de trabalhar com dados de grande escala, e isso só aumentou meu interesse e motivação em aprender mais sobre manipulação e gestão de dados.
+		Além disso, eu sou uma pessoa curiosa e proativa, sempre buscando aprender novas habilidades e conhecimentos. Eu acredito que a educação é uma jornada contínua, e estou sempre procurando oportunidades para expandir meus conhecimentos e habilidades para me tornar um profissional melhor e mais competente.
 
-Além disso, eu sou uma pessoa curiosa e proativa, sempre buscando aprender novas habilidades e conhecimentos. Eu acredito que a educação é uma jornada contínua, e estou sempre procurando oportunidades para expandir meus conhecimentos e habilidades para me tornar um profissional melhor e mais competente.
-		  
 	  </p>
 
 	  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="skills">
@@ -251,6 +266,19 @@ modeToggler.addEventListener('click', () => {
   sidebar.classList.toggle('w3-sidebar-light');
 })
 
+const container = document.querySelector('.animation-container');
+const nameAnimation = document.querySelector('#name-animation');
+const content = document.querySelector('#content');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+
+  if (scrollPosition > container.offsetTop - window.innerHeight / 2) {
+    nameAnimation.style.animationPlayState = 'running';
+    content.style.animationPlayState = 'running';
+  }
+});
+
 
   // Language switcher
 
@@ -259,8 +287,7 @@ languageSwitcher.addEventListener('click', () => {
   const currentLang = document.documentElement.lang;
   if (currentLang === 'en') {
     document.documentElement.lang = 'pt';
-    document.querySelector('#home h1').textContent = 'Portfólio de Aldemir.';
-    document.querySelector('#home p').textContent = 'Programador e Estudante de Engenharia de Computação.';
+
     document.querySelector('#about h2').textContent = 'Sobre';
 	document.querySelector('#skills h2').textContent = 'Habilidades';
 
@@ -274,8 +301,6 @@ languageSwitcher.addEventListener('click', () => {
     document.querySelector('#contact h2').textContent = 'Contate-me';
   } else {
     document.documentElement.lang = 'en';
-    document.querySelector('#home h1').textContent = 'Portfolio of Aldemir.';
-    document.querySelector('#home p').textContent = 'Programmer and Computer Engineering Student.';
     document.querySelector('#about h2').textContent = 'About';
 	document.querySelector('#skills h2').textContent = 'Skills';
     document.querySelector('#about p').textContent = 'Hello, my name is Aldemir Humberto Soares Neto. Currently, I am studying Computer Engineering at IFSP in Picacicaba, and working as an ETL developer at SMARTBREEDER. I have a strong interest in managing and manipulating large amounts of data, ever since I started studying database management in college. I have a knack for learning new things and, above all, a strong willingness to continuously learn in order to become a better professional each day.\n' +
@@ -287,7 +312,12 @@ languageSwitcher.addEventListener('click', () => {
     document.querySelector('#contact h2').textContent = 'Contact Me';
   }
 });
-
+var typed = new Typed('.auto-type', {
+      strings: ['Aldemir Neto.', 'a Developer', 'a Computer Engineer Student'],
+      typeSpeed: 50,
+	  backSpeed: 50,
+	  loop:true
+    });
 </script>
 </div>
 </body>
